@@ -87,7 +87,7 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 		});
 		
 		btNee.setOnClickListener(new OnClickListener() {
-			
+			//TODO find me and remove me egit/eclipse training
 			@Override
 			public void onClick(View v) {
 				schipnaam.setText("Kies uw Schip");
