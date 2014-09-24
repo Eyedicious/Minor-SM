@@ -38,6 +38,8 @@ import com.google.android.gms.maps.model.PolylineOptions;
 //TODO tekstviews en button moeten boven gedeclareed worden en in een methode allemaal geinstantierd worden.
 public class MainActivity extends FragmentActivity implements LocationListener {
 
+	
+	//Testing
 	List<Vaartuigen> schepen;
 	private GoogleMap mMap;
 	Button btNext, btJa, btNee;
