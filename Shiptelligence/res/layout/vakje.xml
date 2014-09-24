@@ -18,6 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:text="Nee"
+        android:background="#bada55"
         android:layout_alignTop="@+id/btJa"/>
 
     <TextView
