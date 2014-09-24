@@ -22,7 +22,6 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -35,7 +34,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
-//TODO tekstviews en button moeten boven gedeclareed worden en in een methode allemaal geinstantierd worden.
+
 public class MainActivity extends FragmentActivity implements LocationListener {
 
 	
@@ -77,7 +76,6 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 	}
 
 	private void createOnClickListeners() {
-		// TODO Auto-generated method stub
 		btJa.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -89,7 +87,6 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 		});
 		
 		btNee.setOnClickListener(new OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 				schipnaam.setText("Kies uw Schip");
@@ -133,7 +130,8 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 			}
 		}
 	}
-
+	
+	//TODO: Location wordt niet altijd gelijk goed geladen--> moet naar gekeken worden
 	private void setUpMap() {
 		d = new HttpURLConnectionLeague();
 		List<Ships> l = new ArrayList<Ships>();
@@ -186,7 +184,7 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 		String meters = String.valueOf(schip.getPositie().getMeters());
 		afstand.setText(meters + " Meter");
 	}
-
+	
 	@Override
 	public void onLocationChanged(Location location) {
 		double latitude = location.getLatitude();
@@ -202,11 +200,11 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 					.getMeters();
 			checkInBuurtVanSchip(intMeters);
 		}
-		//DEBUG variablen die we kunnen gebruiken.
-		float speed = location.getSpeed();
-		float degrees = location.getBearing();
-		String stringSpeed = String.valueOf(speed);
-		String stringDegrees = String.valueOf(degrees);
+		//TODO DEBUG variablen die we kunnen gebruiken.
+//		float speed = location.getSpeed();
+//		float degrees = location.getBearing();
+//		String stringSpeed = String.valueOf(speed);
+//		String stringDegrees = String.valueOf(degrees);
 		}
 
 	private void checkInBuurtVanSchip(int intMeters) {
@@ -214,6 +212,7 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 			btJa.setVisibility(View.VISIBLE);
 			btNee.setVisibility(View.VISIBLE);
 		}else{
+			//TODO meters worden niet aangepast??
 			String meters = String.valueOf(intMeters);
 			afstand.setText(meters + " Meter");
 		}	
