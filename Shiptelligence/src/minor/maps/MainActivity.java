@@ -128,7 +128,8 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 			}
 		}
 	}
-
+	
+	//TODO: Location wordt niet altijd gelijk goed geladen--> moet naar gekeken worden
 	private void setUpMap() {
 		d = new HttpURLConnectionLeague();
 		List<Ships> l = new ArrayList<Ships>();
@@ -181,7 +182,7 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 		String meters = String.valueOf(schip.getPositie().getMeters());
 		afstand.setText(meters + " Meter");
 	}
-
+	
 	@Override
 	public void onLocationChanged(Location location) {
 		double latitude = location.getLatitude();
