@@ -197,7 +197,7 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 					.getMeters();
 			checkInBuurtVanSchip(intMeters);
 		}
-		//DEBUG variablen die we kunnen gebruiken.
+		//TODO DEBUG variablen die we kunnen gebruiken.
 //		float speed = location.getSpeed();
 //		float degrees = location.getBearing();
 //		String stringSpeed = String.valueOf(speed);
@@ -209,6 +209,7 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 			btJa.setVisibility(View.VISIBLE);
 			btNee.setVisibility(View.VISIBLE);
 		}else{
+			//TODO meters worden niet aangepast??
 			String meters = String.valueOf(intMeters);
 			afstand.setText(meters + " Meter");
 		}	
