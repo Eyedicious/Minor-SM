@@ -1,5 +1,12 @@
 package minor.maps;
-
+//XXX kan gebruikt worden voor tasks
+//TODO kan gebruikt worden voor tasks
+//FIXME high priority tasks
+//tasks op iemands naam zetten
+//XANDER Task
+//SEB Task
+//KALOK Task
+//BART Task
 import static java.lang.Math.PI;
 import static java.lang.Math.atan2;
 import static java.lang.Math.cos;
