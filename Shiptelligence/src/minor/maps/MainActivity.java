@@ -22,7 +22,6 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -35,7 +34,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
-//TODO tekstviews en button moeten boven gedeclareed worden en in een methode allemaal geinstantierd worden.
+
 public class MainActivity extends FragmentActivity implements LocationListener {
 
 	List<Vaartuigen> schepen;
@@ -75,7 +74,6 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 	}
 
 	private void createOnClickListeners() {
-		// TODO Auto-generated method stub
 		btJa.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -87,7 +85,6 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 		});
 		
 		btNee.setOnClickListener(new OnClickListener() {
-			//TODO find me and remove me egit/eclipse training
 			@Override
 			public void onClick(View v) {
 				schipnaam.setText("Kies uw Schip");
@@ -201,10 +198,10 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 			checkInBuurtVanSchip(intMeters);
 		}
 		//DEBUG variablen die we kunnen gebruiken.
-		float speed = location.getSpeed();
-		float degrees = location.getBearing();
-		String stringSpeed = String.valueOf(speed);
-		String stringDegrees = String.valueOf(degrees);
+//		float speed = location.getSpeed();
+//		float degrees = location.getBearing();
+//		String stringSpeed = String.valueOf(speed);
+//		String stringDegrees = String.valueOf(degrees);
 		}
 
 	private void checkInBuurtVanSchip(int intMeters) {

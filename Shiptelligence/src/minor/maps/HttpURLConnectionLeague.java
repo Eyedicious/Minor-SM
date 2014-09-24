@@ -50,10 +50,8 @@ public class HttpURLConnectionLeague extends AsyncTask<String,Void,String>{
 			String json = output;
 			s = gson.fromJson(json, SchepenInDeBuurt.class);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
