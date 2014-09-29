@@ -41,7 +41,7 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 
 	List<Vaartuigen> schepen;
 	private GoogleMap mMap;
-	Button btNext, btJa, btNee;
+	Button btNext, btJa, btNee;//qwertyus
 	TextView schipnaam,afstand, schip2, schip3, schip4;
 	HttpURLConnectionLeague d;
 	View l, snelheidEnWaterstandView;
