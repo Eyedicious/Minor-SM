@@ -1,0 +1,38 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/vakje" />
+
+    <TextView
+        android:id="@+id/tvSnelheid"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/imageView1"
+        android:text="tvSnelheid" />
+
+    <TextView
+        android:id="@+id/tvWaterstand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="TVWATERSTAND"/>
+
+    <TextView
+        android:id="@+id/tvDegrees"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/tvSnelheid"
+        android:layout_below="@+id/tvSnelheid"
+        android:layout_marginTop="22dp"
+        android:text="tvDegrees" />
+
+</RelativeLayout>
