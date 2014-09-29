@@ -46,12 +46,13 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 
 	List<Vaartuigen> schepen;
 	private GoogleMap mMap;
-	Button btNext, btJa, btNee;
-	TextView schipnaam,afstand, schip2, schip3, schip4;
+	Button btJa, btNee;
+	TextView schipnaam,afstand, schip2, schip3, schip4, tvSnelheid, tvWaterstand, tvDegrees;
 	HttpURLConnectionLeague d;
 	View l, snelheidEnWaterstandView;
 	int minAfstandBoot = 200;
 	boolean schipGevonden = false;
+	String stringSpeed, stringDegrees;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -69,9 +70,10 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 		schip2 = (TextView) findViewById(R.id.tvSchip2);
 		schip3 = (TextView) findViewById(R.id.tvSchip3);
 		schip4 = (TextView) findViewById(R.id.tvSchip4);
-		
-		btNext = (Button) findViewById(R.id.btNext);
-		btNext.setBackgroundColor(Color.TRANSPARENT);
+		tvSnelheid = (TextView) findViewById(R.id.tvSnelheid);
+		tvWaterstand = (TextView) findViewById(R.id.tvWaterstand);
+		tvDegrees = (TextView) findViewById(R.id.tvDegrees);
+
 		btJa = (Button) findViewById(R.id.btJa);
 		btNee = (Button) findViewById(R.id.btNee);
 		btJa.setVisibility(View.INVISIBLE);
@@ -85,13 +87,11 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 			
 			@Override
 			public void onClick(View v) {
-				l.setVisibility(View.GONE);
-				schipGevonden = true;
-				snelheidEnWaterstandView.setVisibility(View.VISIBLE);
+				bootGevonden();
 			}
 		});
-		
 		btNee.setOnClickListener(new OnClickListener() {
+			
 			@Override
 			public void onClick(View v) {
 				schipnaam.setText("Kies uw Schip");
@@ -101,16 +101,6 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 				schip4.setText(schepen.get(4).getNaam());
 				btJa.setVisibility(View.INVISIBLE);
 				btNee.setVisibility(View.GONE);
-			}
-		});
-		
-		
-		
-		btNext.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				
 			}
 		});
 	}
@@ -134,6 +124,14 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 				setUpMap();
 			}
 		}
+	}
+	
+	protected void bootGevonden() {
+		l.setVisibility(View.GONE);
+		schipGevonden = true;
+		snelheidEnWaterstandView.setVisibility(View.VISIBLE);
+		tvSnelheid.setText(stringSpeed);
+		tvDegrees.setText(stringDegrees);
 	}
 	
 	//TODO: Location wordt niet altijd gelijk goed geladen--> moet naar gekeken worden
