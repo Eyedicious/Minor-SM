@@ -26,5 +26,5 @@ proguard/
 *.log
 
 #Library
-appcompat_v7\
-google-play-services_lib\
+appcompat_v7/
+google-play-services_lib/
