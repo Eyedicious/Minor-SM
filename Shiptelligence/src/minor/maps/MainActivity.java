@@ -44,6 +44,8 @@ import com.google.android.gms.maps.model.PolylineOptions;
 
 public class MainActivity extends FragmentActivity implements LocationListener {
 
+	
+	//Testing
 	List<Vaartuigen> schepen;
 	private GoogleMap mMap;
 	Button btJa, btNee;
