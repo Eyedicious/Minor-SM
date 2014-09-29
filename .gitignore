@@ -26,5 +26,5 @@ proguard/
 *.log
 
 # Appcompat
-Minor-SM\appcompat_v7\
-Minor-SM\google-play-services_lib\
+appcompat_v7\
+google-play-services_lib\
