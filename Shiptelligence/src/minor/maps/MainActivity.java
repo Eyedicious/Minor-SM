@@ -11,6 +11,7 @@ import static java.lang.Math.toRadians;
 import java.util.ArrayList;
 import java.util.List;
 
+import javashitsszzzea.Meetstations;
 import javashitsszzzea.Positie;
 import javashitsszzzea.SchepenInDeBuurt;
 import javashitsszzzea.Ships;
@@ -35,23 +36,29 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
-//TODO tekstviews en button moeten boven gedeclareed worden en in een methode allemaal geinstantierd worden.
+
 public class MainActivity extends FragmentActivity implements LocationListener {
 
 	List<Vaartuigen> schepen;
 	private GoogleMap mMap;
-	Button btNext, btJa, btNee;
-	TextView schipnaam,afstand, schip2, schip3, schip4;
+	Button btJa, btNee;
+	TextView schipnaam,afstand, schip2, schip3, schip4, tvSnelheid, tvWaterstand, tvDegrees;
 	HttpURLConnectionLeague d;
 	View l, snelheidEnWaterstandView;
 	int minAfstandBoot = 200;
 	boolean schipGevonden = false;
+	String stringSpeed, stringDegrees;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		init();
+//		d = new HttpURLConnectionLeague();
+//		double lat = 51.909004;
+//		double lon = 4.487;
+//		Meetstations m = d.getFirstMeetStation(lat, lon);
+//		Log.e("m : ", m.getWATERSTANDEN().get(0).getWaarde());
 	}
 
 	private void init() {
@@ -63,9 +70,10 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 		schip2 = (TextView) findViewById(R.id.tvSchip2);
 		schip3 = (TextView) findViewById(R.id.tvSchip3);
 		schip4 = (TextView) findViewById(R.id.tvSchip4);
-		
-		btNext = (Button) findViewById(R.id.btNext);
-		btNext.setBackgroundColor(Color.TRANSPARENT);
+		tvSnelheid = (TextView) findViewById(R.id.tvSnelheid);
+		tvWaterstand = (TextView) findViewById(R.id.tvWaterstand);
+		tvDegrees = (TextView) findViewById(R.id.tvDegrees);
+
 		btJa = (Button) findViewById(R.id.btJa);
 		btNee = (Button) findViewById(R.id.btNee);
 		btJa.setVisibility(View.INVISIBLE);
@@ -75,17 +83,13 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 	}
 
 	private void createOnClickListeners() {
-		// TODO Auto-generated method stub
 		btJa.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				l.setVisibility(View.GONE);
-				schipGevonden = true;
-				snelheidEnWaterstandView.setVisibility(View.VISIBLE);
+				bootGevonden();
 			}
 		});
-		
 		btNee.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -99,16 +103,14 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 				btNee.setVisibility(View.GONE);
 			}
 		});
-		
-		
-		
-		btNext.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				
-			}
-		});
+	}
+
+	protected void bootGevonden() {
+		l.setVisibility(View.GONE);
+		schipGevonden = true;
+		snelheidEnWaterstandView.setVisibility(View.VISIBLE);
+		tvSnelheid.setText(stringSpeed);
+		tvDegrees.setText(stringDegrees);
 	}
 
 	@Override
@@ -145,6 +147,8 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 			onLocationChanged(location);
 		}
 		locationManager.requestLocationUpdates(provider, 1000, 0, this);
+		//TODO location.getAccuracy() inbouwen
+		
 
 		for (int i = 0; i < l.size(); i++) {
 			Positie pos = l.get(i).getPositie();
@@ -198,23 +202,27 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 					location.getLongitude());
 			int intMeters = s.getVAARTUIGEN().get(0).getPositie()
 					.getMeters();
+			
+			//TODO DEBUG
+			intMeters = 20;
+			
 			checkInBuurtVanSchip(intMeters);
 		}
-		//DEBUG variablen die we kunnen gebruiken.
+		//TODO DEBUG variablen die we kunnen gebruiken.
 		float speed = location.getSpeed();
 		float degrees = location.getBearing();
-		String stringSpeed = String.valueOf(speed);
-		String stringDegrees = String.valueOf(degrees);
+		stringSpeed = String.valueOf(speed);
+		stringDegrees = String.valueOf(degrees);
 		}
 
 	private void checkInBuurtVanSchip(int intMeters) {
+		String meters = String.valueOf(intMeters);
 		if(intMeters<minAfstandBoot){
 			btJa.setVisibility(View.VISIBLE);
 			btNee.setVisibility(View.VISIBLE);
-		}else{
-			String meters = String.valueOf(intMeters);
-			afstand.setText(meters + " Meter");
-		}	
+		}
+		//TODO update textview niet?
+		afstand.setText(meters + " Meter");
 	}
 
 	@Override

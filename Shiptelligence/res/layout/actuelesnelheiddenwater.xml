@@ -12,7 +12,7 @@
 
     <TextView
         android:id="@+id/tvSnelheid"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignTop="@+id/imageView1"
@@ -28,7 +28,7 @@
 
     <TextView
         android:id="@+id/tvDegrees"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/tvSnelheid"
         android:layout_below="@+id/tvSnelheid"
