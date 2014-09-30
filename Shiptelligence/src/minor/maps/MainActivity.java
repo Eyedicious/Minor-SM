@@ -27,6 +27,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -48,6 +49,7 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 	int minAfstandBoot = 200;
 	boolean schipGevonden = false;
 	String stringSpeed, stringDegrees;
+	ImageView iView;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +66,8 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 	private void init() {
 		l = (View) findViewById(R.id.idVakje);
 		snelheidEnWaterstandView = (View) findViewById(R.id.idsnelheidEnWaterstandView);
+		
+		iView = (ImageView) findViewById(R.id.imageView1);
 		
 		schipnaam = (TextView) findViewById(R.id.tvSchipnaam);
 		afstand = (TextView) findViewById(R.id.tvAfstand);
