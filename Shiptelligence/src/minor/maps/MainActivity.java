@@ -11,6 +11,7 @@ import static java.lang.Math.toRadians;
 import java.util.ArrayList;
 import java.util.List;
 
+import javashitsszzzea.Meetstations;
 import javashitsszzzea.Positie;
 import javashitsszzzea.SchepenInDeBuurt;
 import javashitsszzzea.Ships;
