@@ -3,6 +3,7 @@ package minor.maps;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
+import javashitsszzzea.Meetstations;
 import javashitsszzzea.SchepenInDeBuurt;
 import javashitsszzzea.Ships;
 
@@ -16,7 +17,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.google.gson.Gson;
-
+ 
 public class HttpURLConnectionLeague extends AsyncTask<String,Void,String>{
 	//Deze word wel hier geset
 	String URL = "http://ship.railplanet.eu/getships.php";
@@ -50,14 +51,29 @@ public class HttpURLConnectionLeague extends AsyncTask<String,Void,String>{
 			String json = output;
 			s = gson.fromJson(json, SchepenInDeBuurt.class);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		return s;
+	}
+	
+	public Meetstations getFirstMeetStation(double lat, double lon){
+		String output = null;
+		Meetstations m = null;
+		try {
+			URL = "http://ship.railplanet.eu/api/meetstation.php?toon_meetgegevens&lat="+lat+"&lon="+lon+"&limit=1";
+			output = new HttpURLConnectionLeague().execute(URL).get();
+			String json = output;
+			m = gson.fromJson(json, Meetstations.class);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		}
+		
+		return m;
 	}
 
 	@Override
